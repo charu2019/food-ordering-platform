@@ -19,7 +19,59 @@ services:
       timeout: 5s
       retries: 5
 
-  # Spring Boot Backend
+  # Zookeeper for Kafka
+  zookeeper:
+    image: confluentinc/cp-zookeeper:7.5.0
+    container_name: food-ordering-zookeeper
+    environment:
+      ZOOKEEPER_CLIENT_PORT: 2181
+      ZOOKEEPER_TICK_TIME: 2000
+    ports:
+      - "2181:2181"
+    healthcheck:
+      test: ["CMD-SHELL", "echo ruok | nc localhost 2181"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  # Apache Kafka
+  kafka:
+    image: confluentinc/cp-kafka:7.5.0
+    container_name: food-ordering-kafka
+    depends_on:
+      zookeeper:
+        condition: service_healthy
+    ports:
+      - "9092:9092"
+    environment:
+      KAFKA_BROKER_ID: 1
+      KAFKA_ZOOKEEPER_CONNECT: zookeeper:2181
+      KAFKA_ADVERTISED_LISTENERS: PLAINTEXT://kafka:29092,PLAINTEXT_HOST://localhost:9092
+      KAFKA_LISTENER_SECURITY_PROTOCOL_MAP: PLAINTEXT:PLAINTEXT,PLAINTEXT_HOST:PLAINTEXT
+      KAFKA_INTER_BROKER_LISTENER_NAME: PLAINTEXT
+      KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR: 1
+      KAFKA_AUTO_CREATE_TOPICS_ENABLE: "true"
+    healthcheck:
+      test: ["CMD-SHELL", "kafka-topics --bootstrap-server localhost:9092 --list"]
+      interval: 10s
+      timeout: 10s
+      retries: 5
+
+  # Kafka Web UI
+  kafka-ui:
+    image: provectuslabs/kafka-ui:latest
+    container_name: kafka-ui
+    ports:
+      - "8082:8080"
+    environment:
+      KAFKA_CLUSTERS_0_NAME: local
+      KAFKA_CLUSTERS_0_BOOTSTRAPSERVERS: kafka:29092
+      DYNAMIC_CONFIG_ENABLED: "true"
+    depends_on:
+      kafka:
+        condition: service_healthy
+
+  # Main Backend (Customer-facing)
   backend:
     build:
       context: ./food-ordering-backend
@@ -30,15 +82,39 @@ services:
       SPRING_DATASOURCE_URL: jdbc:postgresql://postgres:5432/foodordering
       SPRING_DATASOURCE_USERNAME: fooduser
       SPRING_DATASOURCE_PASSWORD: foodpass123
+      KAFKA_BOOTSTRAP_SERVERS: kafka:29092
     ports:
       - "8080:8080"
     depends_on:
       postgres:
         condition: service_healthy
+      kafka:
+        condition: service_healthy
     volumes:
       - ./uploads:/app/uploads
 
-  # React Frontend (for production build)
+  # Admin Backend (Admin-facing)
+  admin-backend:
+    build:
+      context: ./admin-backend
+      dockerfile: Dockerfile
+    container_name: admin-backend
+    environment:
+      SPRING_PROFILES_ACTIVE: dev
+      DB_HOST: postgres
+      DB_USER: fooduser
+      DB_PASS: foodpass123
+      KAFKA_BOOTSTRAP_SERVERS: kafka:29092
+      JWT_SECRET: EPtkIyG6WMD8wu/cmJY3Dfz+Y5vEq6v2v+NlYfw4L74=
+    ports:
+      - "8081:8081"
+    depends_on:
+      postgres:
+        condition: service_healthy
+      kafka:
+        condition: service_healthy
+
+  # Main Frontend (Customer-facing)
   frontend:
     build:
       context: ./food-ordering-frontend
@@ -49,7 +125,16 @@ services:
     depends_on:
       - backend
 
+  # Admin Frontend (Admin-facing)
+  admin-frontend:
+    build:
+      context: ./admin-frontend
+      dockerfile: Dockerfile
+    container_name: admin-frontend
+    ports:
+      - "3001:80"
+    depends_on:
+      - admin-backend
+
 volumes:
   postgres_data:
-
-# Development override file can be created as docker-compose.override.yml

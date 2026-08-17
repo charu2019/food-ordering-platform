@@ -1,11 +1,11 @@
 spring:
   application:
-    name: food-ordering-platform
+    name: admin-backend
   
   datasource:
-    url: jdbc:postgresql://localhost:5432/foodordering
-    username: fooduser
-    password: foodpass123
+    url: jdbc:postgresql://${DB_HOST:localhost}:5432/foodordering
+    username: ${DB_USER:fooduser}
+    password: ${DB_PASS:foodpass123}
     driver-class-name: org.postgresql.Driver
     hikari:
       maximum-pool-size: 10
@@ -20,13 +20,7 @@ spring:
       hibernate:
         dialect: org.hibernate.dialect.PostgreSQLDialect
         format_sql: true
-        use_sql_comments: true
     open-in-view: false
-  
-  flyway:
-    enabled: true
-    baseline-on-migrate: true
-    locations: classpath:db/migration
   
   kafka:
     bootstrap-servers: ${KAFKA_BOOTSTRAP_SERVERS:localhost:9092}
@@ -35,61 +29,36 @@ spring:
       value-serializer: org.springframework.kafka.support.serializer.JsonSerializer
       acks: all
       retries: 3
-    consumer:
-      group-id: order-status-group
-      auto-offset-reset: earliest
-      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
-      value-deserializer: org.springframework.kafka.support.serializer.JsonDeserializer
-      properties:
-        spring.json.trusted.packages: "com.foodordering.dto.kafka,com.foodordering.admin.dto.kafka"
-    listener:
-      ack-mode: manual-immediate
-  
-  servlet:
-    multipart:
-      max-file-size: 5MB
-      max-request-size: 10MB
 
-# Application Configuration
 app:
   jwt:
     secret: ${JWT_SECRET:EPtkIyG6WMD8wu/cmJY3Dfz+Y5vEq6v2v+NlYfw4L74=}
-    expiration: 86400000 # 24 hours in milliseconds
-  
-  storage:
-    upload-dir: ./uploads
-  
-  payment:
-    mock-enabled: true
-  
-  cors:
-    allowed-origins: http://localhost:3000,http://localhost:5173
-    allowed-methods: GET,POST,PUT,PATCH,DELETE,OPTIONS
-    allowed-headers: "*"
-    allow-credentials: true
+    expiration: 86400000
   
   kafka:
     topics:
       order-status: order-status-events
+  
+  cors:
+    allowed-origins: http://localhost:3001,http://localhost:5174
+    allowed-methods: GET,POST,PUT,PATCH,DELETE,OPTIONS
+    allowed-headers: "*"
+    allow-credentials: true
 
-# Server Configuration
 server:
-  port: 8080
+  port: 8081
   error:
     include-message: always
     include-binding-errors: always
 
-# Logging
 logging:
   level:
-    com.foodordering: DEBUG
+    com.foodordering.admin: DEBUG
     org.springframework.security: DEBUG
-    org.hibernate.SQL: DEBUG
   pattern:
     console: "%d{yyyy-MM-dd HH:mm:ss} - %msg%n"
 
 ---
-# Development Profile
 spring:
   config:
     activate:
@@ -98,7 +67,6 @@ spring:
     show-sql: true
 
 ---
-# Production Profile
 spring:
   config:
     activate:
@@ -107,5 +75,5 @@ spring:
     show-sql: false
 logging:
   level:
-    com.foodordering: INFO
+    com.foodordering.admin: INFO
     org.springframework.security: WARN

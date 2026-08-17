@@ -25,4 +25,10 @@ public interface OrderRepository extends JpaRepository<Order, UUID> {
     List<Order> findByRestaurantIdAndStatusIn(UUID restaurantId, List<OrderStatus> statuses);
     
     Optional<Order> findByIdAndCustomerId(UUID orderId, UUID customerId);
+    
+    List<Order> findAllByOrderByCreatedAtDesc();
+    
+    List<Order> findByStatusOrderByCreatedAtDesc(OrderStatus status);
+    
+    long countByStatus(OrderStatus status);
 }

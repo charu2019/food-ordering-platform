@@ -1,5 +1,6 @@
 package com.foodordering.service;
 
+import com.foodordering.dto.kafka.OrderStatusEvent;
 import com.foodordering.dto.order.*;
 import com.foodordering.exception.BusinessException;
 import com.foodordering.exception.ResourceNotFoundException;
@@ -15,6 +16,7 @@ import org.springframework.transaction.annotation.Transactional;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import java.util.List;
+import java.util.Map;
 import java.util.UUID;
 import java.util.stream.Collectors;
 
@@ -29,16 +31,22 @@ public class OrderService {
     private final UserRepository userRepository;
     private final PaymentRepository paymentRepository;
     private final PaymentService paymentService;
+    private final OrderEventProducer orderEventProducer;
+    
+    private static final Map<OrderStatus, List<OrderStatus>> VALID_TRANSITIONS = Map.of(
+            OrderStatus.PENDING_PAYMENT, List.of(OrderStatus.PLACED, OrderStatus.CANCELLED),
+            OrderStatus.PLACED, List.of(OrderStatus.PREPARING, OrderStatus.CANCELLED),
+            OrderStatus.PREPARING, List.of(OrderStatus.PICKED_UP, OrderStatus.CANCELLED),
+            OrderStatus.PICKED_UP, List.of(OrderStatus.DELIVERED, OrderStatus.CANCELLED)
+    );
     
     @Transactional
     public OrderResponse createOrder(UUID customerId, CreateOrderRequest request) {
         log.info("Creating order for customer: {} at restaurant: {}", customerId, request.getRestaurantId());
         
-        // Validate customer
         User customer = userRepository.findById(customerId)
                 .orElseThrow(() -> new ResourceNotFoundException("Customer not found"));
         
-        // Validate restaurant
         Restaurant restaurant = restaurantRepository.findById(request.getRestaurantId())
                 .orElseThrow(() -> new ResourceNotFoundException("Restaurant not found"));
         
@@ -46,7 +54,6 @@ public class OrderService {
             throw new BusinessException("Restaurant is currently not accepting orders");
         }
         
-        // Build order
         Order order = Order.builder()
                 .customer(customer)
                 .restaurant(restaurant)
@@ -58,7 +65,6 @@ public class OrderService {
                 .totalAmount(BigDecimal.ZERO)
                 .build();
         
-        // Add order items and calculate total
         BigDecimal totalAmount = BigDecimal.ZERO;
         
         for (OrderItemRequest itemRequest : request.getItems()) {
@@ -90,11 +96,9 @@ public class OrderService {
         order.setTotalAmount(totalAmount);
         order.setEstimatedDeliveryTime(LocalDateTime.now().plusMinutes(30));
         
-        // Save order
         order = orderRepository.save(order);
         log.info("Order created with ID: {}, Total: {}", order.getId(), totalAmount);
         
-        // Initiate payment
         Payment payment = paymentService.initiatePayment(order.getId(), totalAmount);
         
         return mapToResponse(order);
@@ -102,21 +106,27 @@ public class OrderService {
     
     @Transactional
     public OrderResponse updateOrderStatus(UUID orderId, UUID userId, UpdateOrderStatusRequest request) {
-        log.info("Updating order {} status to: {}", orderId, request.getStatus());
+        log.info("Updating order {} status to: {} by user: {}", orderId, request.getStatus(), userId);
         
         Order order = orderRepository.findById(orderId)
                 .orElseThrow(() -> new ResourceNotFoundException("Order not found"));
         
-        // Validate status transition
         validateStatusTransition(order.getStatus(), request.getStatus());
         
-        order.setStatus(request.getStatus());
+        User user = userRepository.findById(userId)
+                .orElseThrow(() -> new ResourceNotFoundException("User not found"));
         
-        if (request.getStatus() == OrderStatus.DELIVERED) {
-            order.setDeliveredAt(LocalDateTime.now());
-        }
+        OrderStatusEvent event = OrderStatusEvent.builder()
+                .orderId(orderId)
+                .previousStatus(order.getStatus())
+                .newStatus(request.getStatus())
+                .updatedBy(userId)
+                .updatedByRole(user.getRole().name())
+                .timestamp(LocalDateTime.now())
+                .notes(request.getNotes())
+                .build();
         
-        order = orderRepository.save(order);
+        orderEventProducer.sendOrderStatusEvent(event);
         
         return mapToResponse(order);
     }
@@ -143,9 +153,13 @@ public class OrderService {
     }
     
     private void validateStatusTransition(OrderStatus currentStatus, OrderStatus newStatus) {
-        // Simple validation - can be enhanced
         if (currentStatus == OrderStatus.DELIVERED || currentStatus == OrderStatus.CANCELLED) {
             throw new BusinessException("Cannot update status of completed/cancelled order");
+        }
+        
+        List<OrderStatus> allowedNextStatuses = VALID_TRANSITIONS.get(currentStatus);
+        if (allowedNextStatuses == null || !allowedNextStatuses.contains(newStatus)) {
+            throw new BusinessException("Invalid status transition from " + currentStatus + " to " + newStatus);
         }
     }
     
@@ -161,7 +175,6 @@ public class OrderService {
                         .build())
                 .collect(Collectors.toList());
         
-        // Fetch payment info
         PaymentStatus paymentStatus = null;
         String paymentMethod = null;
         String cardLastFour = null;
