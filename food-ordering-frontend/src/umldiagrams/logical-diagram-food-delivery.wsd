@@ -1,0 +1,17 @@
+@startuml food1
+actor Customer
+actor RestaurantOwner
+actor DeliveryPartner
+actor Admin
+Customer --> MobileApp
+RestaurantOwner --> WebDashboard
+DeliveryPartner --> DeliveryApp
+Admin --> AdminPanel
+MobileApp --> Backend
+WebDashboard --> Backend
+DeliveryApp --> Backend
+AdminPanel --> Backend
+Backend --> Database
+Backend --> PaymentGateway
+Backend --> NotificationService
+@enduml

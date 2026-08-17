@@ -1,0 +1,19 @@
+@startuml order-placement
+actor Customer
+participant MobileApp
+participant Backend
+participant PaymentGateway
+participant Restaurant
+participant DeliveryPartner
+Customer -> MobileApp : Browse & Add to Cart
+MobileApp -> Backend : Fetch Restaurants & Menu
+Customer -> MobileApp : Checkout
+MobileApp -> Backend : Create Order (Pending Payment)
+Backend -> PaymentGateway : Initiate Payment
+PaymentGateway --> Backend : Payment Success
+Backend -> Backend : Confirm Order
+Backend -> Restaurant : Notify New Order
+Backend -> DeliveryPartner : Assign Delivery
+DeliveryPartner -> Backend : Update Status
+Backend -> MobileApp : Order Status Updates
+@enduml

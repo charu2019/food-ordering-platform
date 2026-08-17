@@ -1,0 +1,32 @@
+spring:
+  application:
+    name: food-ordering-platform
+  datasource:
+    url: jdbc:postgresql://localhost:5432/foodordering
+    username: fooduser
+    password: foodpass123
+    driver-class-name: org.postgresql.Driver
+  jpa:
+    hibernate:
+      ddl-auto: validate
+    show-sql: false
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+  flyway:
+    enabled: true
+    baseline-on-migrate: true
+
+app:
+  jwt:
+    secret: your-256-bit-secret-key-change-this-in-production-please-make-it-long
+    expiration: 86400000
+  cors:
+    allowed-origins: http://localhost:3000,http://localhost:5173
+
+server:
+  port: 8080
+
+logging:
+  level:
+    com.foodordering: DEBUG

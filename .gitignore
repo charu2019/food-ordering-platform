@@ -1,0 +1,18 @@
+# Backend
+food-ordering-backend/target/
+food-ordering-backend/.mvn/
+food-ordering-backend/mvnw
+food-ordering-backend/mvnw.cmd
+
+# Frontend
+food-ordering-frontend/node_modules/
+food-ordering-frontend/dist/
+food-ordering-frontend/.env.local
+
+# IDE
+.idea/
+.vscode/
+*.iml
+
+# OS
+.DS_Store

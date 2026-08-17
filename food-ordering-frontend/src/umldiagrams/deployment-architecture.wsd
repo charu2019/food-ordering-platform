@@ -1,0 +1,25 @@
+@startuml Deployment-architecture
+node "Client Apps" {
+component MobileApp
+component WebDashboard
+}
+
+
+node "Cloud" {
+node "Load Balancer" {
+component LB
+}
+node "App Service" {
+component Backend
+}
+node "Database" {
+component PostgreSQL
+}
+}
+
+
+MobileApp --> LB
+WebDashboard --> LB
+LB --> Backend
+Backend --> PostgreSQL
+@enduml

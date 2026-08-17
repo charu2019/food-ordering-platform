@@ -1,0 +1,14 @@
+@startuml Order-Creation-Flow
+start
+:Validate cart;
+:Calculate total;
+:Create order (PENDING_PAYMENT);
+:Initiate payment;
+if (Payment success?) then (yes)
+:Confirm order;
+:Notify restaurant;
+else (no)
+:Cancel order;
+endif
+stop
+@enduml

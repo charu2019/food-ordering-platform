@@ -1,0 +1,55 @@
+version: '3.8'
+
+services:
+  # PostgreSQL Database
+  postgres:
+    image: postgres:15-alpine
+    container_name: food-ordering-db
+    environment:
+      POSTGRES_DB: foodordering
+      POSTGRES_USER: fooduser
+      POSTGRES_PASSWORD: foodpass123
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U fooduser -d foodordering"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  # Spring Boot Backend
+  backend:
+    build:
+      context: ./food-ordering-backend
+      dockerfile: Dockerfile
+    container_name: food-ordering-backend
+    environment:
+      SPRING_PROFILES_ACTIVE: dev
+      SPRING_DATASOURCE_URL: jdbc:postgresql://postgres:5432/foodordering
+      SPRING_DATASOURCE_USERNAME: fooduser
+      SPRING_DATASOURCE_PASSWORD: foodpass123
+    ports:
+      - "8080:8080"
+    depends_on:
+      postgres:
+        condition: service_healthy
+    volumes:
+      - ./uploads:/app/uploads
+
+  # React Frontend (for production build)
+  frontend:
+    build:
+      context: ./food-ordering-frontend
+      dockerfile: Dockerfile
+    container_name: food-ordering-frontend
+    ports:
+      - "3000:80"
+    depends_on:
+      - backend
+
+volumes:
+  postgres_data:
+
+# Development override file can be created as docker-compose.override.yml

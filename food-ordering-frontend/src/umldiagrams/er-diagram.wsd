@@ -1,0 +1,16 @@
+@startuml ERDigram-food-delivery-app
+entity users
+entity restaurants
+entity menu_items
+entity orders
+entity order_items
+entity payments
+
+
+users ||--o{ restaurants : owns
+restaurants ||--o{ menu_items
+users ||--o{ orders : places
+orders ||--o{ order_items
+menu_items ||--o{ order_items
+orders ||--|| payments
+@enduml

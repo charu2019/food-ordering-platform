@@ -1,0 +1,906 @@
+docker ps
+CONTAINER ID   IMAGE                             COMMAND                  CREATED        STATUS                  PORTS                    NAMES
+85c9ca892fd5   food-ordering-platform-frontend   "/docker-entrypoint.…"   24 hours ago   Up 24 hours             0.0.0.0:3000->80/tcp     food-ordering-frontend
+677bbc6034c0   food-ordering-platform-backend    "java -jar app.jar"      24 hours ago   Up 24 hours             0.0.0.0:8080->8080/tcp   food-ordering-backend
+3d278b1e652b   postgres:15-alpine                "docker-entrypoint.s…"   24 hours ago   Up 24 hours (healthy)   0.0.0.0:5432->5432/tcp   food-ordering-db
+
+C:\Users\linux\Downloads\Online-Food-Ordering-App-System-design-step-by-step\Implementation-using-claude\setup\food-ordering-platform>docker-compose down -v
+[+] Running 5/5
+ ✔ Container food-ordering-frontend             Removed                                                                                                                                                       0.2s
+ ✔ Container food-ordering-backend              Removed                                                                                                                                                       0.2s
+ ✔ Container food-ordering-db                   Removed                                                                                                                                                       0.2s
+ ✔ Volume food-ordering-platform_postgres_data  Removed                                                                                                                                                       0.1s
+ ✔ Network food-ordering-platform_default       Removed                                                                                                                                                       0.1s
+
+C:\Users\linux\Downloads\Online-Food-Ordering-App-System-design-step-by-step\Implementation-using-claude\setup\food-ordering-platform>
+C:\Users\linux\Downloads\Online-Food-Ordering-App-System-design-step-by-step\Implementation-using-claude\setup\food-ordering-platform>
+C:\Users\linux\Downloads\Online-Food-Ordering-App-System-design-step-by-step\Implementation-using-claude\setup\food-ordering-platform>
+C:\Users\linux\Downloads\Online-Food-Ordering-App-System-design-step-by-step\Implementation-using-claude\setup\food-ordering-platform>
+C:\Users\linux\Downloads\Online-Food-Ordering-App-System-design-step-by-step\Implementation-using-claude\setup\food-ordering-platform>
+C:\Users\linux\Downloads\Online-Food-Ordering-App-System-design-step-by-step\Implementation-using-claude\setup\food-ordering-platform>docker ps
+CONTAINER ID   IMAGE     COMMAND   CREATED   STATUS    PORTS     NAMES
+
+C:\Users\linux\Downloads\Online-Food-Ordering-App-System-design-step-by-step\Implementation-using-claude\setup\food-ordering-platform>docker ps -a
+CONTAINER ID   IMAGE     COMMAND   CREATED   STATUS    PORTS     NAMES
+
+C:\Users\linux\Downloads\Online-Food-Ordering-App-System-design-step-by-step\Implementation-using-claude\setup\food-ordering-platform>docker images
+REPOSITORY                        TAG         IMAGE ID       CREATED        SIZE
+food-ordering-platform-backend    latest      3e5fabc981e6   24 hours ago   380MB
+food-ordering-platform-frontend   latest      301a60af52ca   27 hours ago   62.2MB
+postgres                          15-alpine   36a937f48ac7   5 weeks ago    274MB
+
+C:\Users\linux\Downloads\Online-Food-Ordering-App-System-design-step-by-step\Implementation-using-claude\setup\food-ordering-platform>docker rmi 3e5fabc981e6 301a60af52ca 36a937f48ac7
+Untagged: food-ordering-platform-backend:latest
+Deleted: sha256:3e5fabc981e60d9cbdb84523d17780dc47e920a94c1cd8fc1cf7da0b6a60c88b
+Untagged: food-ordering-platform-frontend:latest
+Deleted: sha256:301a60af52cad0a7572b4e17a7508d981a2a316722972f2b2be569c6800ad5bd
+Untagged: postgres:15-alpine
+Untagged: postgres@sha256:b3968e348b48f1198cc6de6611d055dbad91cd561b7990c406c3fc28d7095b21
+Deleted: sha256:36a937f48ac758aef4bb5254440933c81fc970f6dbf9f96b87542b4dda7e7b6b
+Deleted: sha256:5a41bbebc705b454e8f7fbac089fb6f44888822d065ab408eca0184aabf41453
+Deleted: sha256:4f7c2f7571f24f547256abafe11e6cb6d87c5c419e5314e3b3033af97fc7d267
+Deleted: sha256:526427b1a7d632a63ec9b8a4ce91ea41fba557ce4bd60025fe709539d62aac73
+Deleted: sha256:ba8658860f56697c06ba4753c84790d2983fc78a05a378345c5912aa5a1bfe7b
+Deleted: sha256:7f32a00b099de56f91c74a4308a350c2c6df323f45a6d4797769f66d3802a32c
+Deleted: sha256:52301f09a6f9848d022ac15ec673f65b683499050528d783e292f8808e05b217
+Deleted: sha256:6935d0789d13e6abff7d61225d8a5d6ef997c8ef5212bd7930d64d99859fb463
+Deleted: sha256:f91999bb5023182361ffc9956e113aad31396c3d49cd7f3060a48bf499ddfb51
+Deleted: sha256:ef92c0afaf39e56e4f1d86062593fd369be3f0c2fd7ac1547548885d049148ea
+Deleted: sha256:dc13049aaf9e5578a148163fef75c00a29eb2ee5438d26d3e34c88fb28113eda
+
+C:\Users\linux\Downloads\Online-Food-Ordering-App-System-design-step-by-step\Implementation-using-claude\setup\food-ordering-platform>
+C:\Users\linux\Downloads\Online-Food-Ordering-App-System-design-step-by-step\Implementation-using-claude\setup\food-ordering-platform>
+C:\Users\linux\Downloads\Online-Food-Ordering-App-System-design-step-by-step\Implementation-using-claude\setup\food-ordering-platform>
+C:\Users\linux\Downloads\Online-Food-Ordering-App-System-design-step-by-step\Implementation-using-claude\setup\food-ordering-platform>docker images
+REPOSITORY   TAG       IMAGE ID   CREATED   SIZE
+C:\Users\linux\Downloads\Online-Food-Ordering-App-System-design-step-by-step\Implementation-using-claude\setup\food-ordering-platform>docker-compose up -d
+[+] Running 12/12
+ ✔ postgres 11 layers [⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿]      0B/0B      Pulled                                                                                                                                                   34.8s
+   ✔ 589002ba0eae Pull complete                                                                                                                                                                               3.2s
+   ✔ 80880d84c7ee Pull complete                                                                                                                                                                               1.8s
+   ✔ 52ab15f7caf3 Pull complete                                                                                                                                                                               2.7s
+   ✔ 3f0f76fbbf7f Pull complete                                                                                                                                                                               9.7s
+   ✔ 13b5376b3898 Pull complete                                                                                                                                                                               5.3s
+   ✔ 3058f5761809 Pull complete                                                                                                                                                                              25.0s
+   ✔ 89acc9a02475 Pull complete                                                                                                                                                                               7.4s
+   ✔ 76724a94cd79 Pull complete                                                                                                                                                                              15.0s
+   ✔ dc34e1889eb4 Pull complete                                                                                                                                                                              13.7s
+   ✔ 2e54eccd7e45 Pull complete                                                                                                                                                                              15.3s
+   ✔ b9ae69fca244 Pull complete                                                                                                                                                                              16.6s
+[+] Building 48.8s (8/8)                                                                                                                                                                            docker:default
+[+] Building 49.2s (8/8)                                                                                                                                                                            docker:default
+[+] Building 65.4s (23/23) FINISHED                                                                                                                                                                 docker:default
+ => [backend internal] load build definition from Dockerfile                                                                                                                                                  0.2s
+ => => transferring dockerfile: 586B                                                                                                                                                                          0.1s
+ => [backend internal] load metadata for docker.io/library/eclipse-temurin:17-jdk-alpine                                                                                                                      4.5s
+ => [backend internal] load .dockerignore                                                                                                                                                                     0.0s
+ => => transferring context: 2B                                                                                                                                                                               0.0s
+ => [backend stage-1 1/3] FROM docker.io/library/eclipse-temurin:17-jdk-alpine@sha256:e2219a46b9e20e3fe8bb303dd851978bb8f9bfb3c54da19e1ea245e326f3b1f6                                                       41.7s
+ => => resolve docker.io/library/eclipse-temurin:17-jdk-alpine@sha256:e2219a46b9e20e3fe8bb303dd851978bb8f9bfb3c54da19e1ea245e326f3b1f6                                                                        0.0s
+ => => sha256:d49a2dee86fb12766dd648402d010ca105846a41bd58738454e53780d4bb8e97 3.80MB / 3.80MB                                                                                                                6.4s
+ => => sha256:cc77cdbd7bc1e2f452d8429402632b993034ee6bfccffc10cc8a951d8f9bf6b4 21.12MB / 21.12MB                                                                                                              8.8s
+ => => sha256:db795874e1acc8dcd7dfaa11e545c47a36bd9db774d51cecf4ab0273da86053a 143.99MB / 143.99MB                                                                                                           36.1s
+ => => sha256:e2219a46b9e20e3fe8bb303dd851978bb8f9bfb3c54da19e1ea245e326f3b1f6 1.38kB / 1.38kB                                                                                                                0.0s
+ => => sha256:9acc785f69195f092e7b0a2226168061e7edcfbc6ec5ecff46d1f6f821f7bb03 1.95kB / 1.95kB                                                                                                                0.0s
+ => => sha256:d31e49df7bb010155388aacfd218a1c414801daed21a92a3aa8516e77cb4b04f 4.23kB / 4.23kB                                                                                                                0.0s
+ => => extracting sha256:d49a2dee86fb12766dd648402d010ca105846a41bd58738454e53780d4bb8e97                                                                                                                     0.2s
+ => => sha256:ee4cba3796c63f930fa19b62040f34d6b16b4f7dd6a95896d3e6da8c177eabd7 129B / 129B                                                                                                                    7.3s
+ => => sha256:357173fc29013c94bdde74c736de14f4dfaf05e42614f5d5346add87083f20f3 2.28kB / 2.28kB                                                                                                                8.1s
+ => => extracting sha256:cc77cdbd7bc1e2f452d8429402632b993034ee6bfccffc10cc8a951d8f9bf6b4                                                                                                                     0.9s
+ => => extracting sha256:db795874e1acc8dcd7dfaa11e545c47a36bd9db774d51cecf4ab0273da86053a                                                                                                                     3.7s
+ => => extracting sha256:ee4cba3796c63f930fa19b62040f34d6b16b4f7dd6a95896d3e6da8c177eabd7                                                                                                                     0.0s
+ => => extracting sha256:357173fc29013c94bdde74c736de14f4dfaf05e42614f5d5346add87083f20f3                                                                                                                     0.0s
+ => [backend internal] load build context                                                                                                                                                                     3.1s
+ => => transferring context: 46.81MB                                                                                                                                                                          3.0s
+ => [backend stage-1 2/3] WORKDIR /app                                                                                                                                                                        0.8s
+ => [backend stage-1 3/3] COPY target/*.jar app.jar                                                                                                                                                           0.8s
+ => [backend] exporting to image                                                                                                                                                                              0.5s
+ => => exporting layers                                                                                                                                                                                       0.4s
+ => => writing image sha256:47e84975766d172d0a391d79e8083715169f17e5ccd0941cbd7bb4888591397e                                                                                                                  0.0s
+ => => naming to docker.io/library/food-ordering-platform-backend                                                                                                                                             0.0s
+ => [frontend internal] load build definition from Dockerfile                                                                                                                                                 0.1s
+ => => transferring dockerfile: 565B                                                                                                                                                                          0.0s
+ => [frontend internal] load metadata for docker.io/library/nginx:alpine                                                                                                                                      4.6s
+ => [frontend internal] load metadata for docker.io/library/node:18-alpine                                                                                                                                    3.0s
+ => [frontend internal] load .dockerignore                                                                                                                                                                    0.0s
+ => => transferring context: 2B                                                                                                                                                                               0.0s
+ => [frontend build 1/6] FROM docker.io/library/node:18-alpine@sha256:8d6421d663b4c28fd3ebc498332f249011d118945588d0a35cb9bc4b8ca09d9e                                                                        0.0s
+ => [frontend internal] load build context                                                                                                                                                                    3.1s
+ => => transferring context: 972.06kB                                                                                                                                                                         3.0s
+ => [frontend stage-1 1/3] FROM docker.io/library/nginx:alpine@sha256:7d7a15b8a280c661051955f14c2b91fed3e23724ddba18d2f53e8b44e74ab37a                                                                       10.3s
+ => => resolve docker.io/library/nginx:alpine@sha256:7d7a15b8a280c661051955f14c2b91fed3e23724ddba18d2f53e8b44e74ab37a                                                                                         0.1s
+ => => sha256:7d7a15b8a280c661051955f14c2b91fed3e23724ddba18d2f53e8b44e74ab37a 10.33kB / 10.33kB                                                                                                              0.0s
+ => => sha256:a60ab79b8d1cbc6c0860ca9829908c5e7e83ed887034e778fc7adf0b1bfe5e47 2.50kB / 2.50kB                                                                                                                0.0s
+ => => sha256:9331cd6029cbf318c5576c03d779488ecadd7dd7425d199cbfd0906a6235ffce 1.86MB / 1.86MB                                                                                                                1.5s
+ => => sha256:211bae00ea5606b36896883a2b8f10e9622638d7d5b3a33da6af615d868e4402 628B / 628B                                                                                                                    1.7s
+ => => sha256:2a855eac5070cae618138dbc004d0324511caafb6703d0168509f4547cc97aaa 11.66kB / 11.66kB                                                                                                              0.0s
+ => => sha256:9739627526d74285cefbf02d43bcbc00fc946527670d43db2fa258e6082c876b 955B / 955B                                                                                                                    1.7s
+ => => extracting sha256:9331cd6029cbf318c5576c03d779488ecadd7dd7425d199cbfd0906a6235ffce                                                                                                                     0.1s
+ => => sha256:6c2f4c63521d43b201a4c0c5d24e71aeb94ed3e67217bb0b91e8fb040382ed06 404B / 404B                                                                                                                    2.3s
+ => => sha256:76fc765fd3b0af90def0c6f9d14b2fb36c59d2ab6efc3f330cba39d3fb62f500 1.21kB / 1.21kB                                                                                                                2.5s
+ => => sha256:cd835559902ab574fc1dbdd1e32130771477ac163c5502057ab6dc78e1f7b8fe 1.40kB / 1.40kB                                                                                                                2.6s
+ => => extracting sha256:211bae00ea5606b36896883a2b8f10e9622638d7d5b3a33da6af615d868e4402                                                                                                                     0.0s
+ => => extracting sha256:9739627526d74285cefbf02d43bcbc00fc946527670d43db2fa258e6082c876b                                                                                                                     0.0s
+ => => extracting sha256:6c2f4c63521d43b201a4c0c5d24e71aeb94ed3e67217bb0b91e8fb040382ed06                                                                                                                     0.0s
+ => => sha256:55cbbd6285fe0ee5fcdef2dc641bfad7889b35d4542cb111968eb7f613bb6eaf 20.18MB / 20.18MB                                                                                                              6.9s
+ => => extracting sha256:76fc765fd3b0af90def0c6f9d14b2fb36c59d2ab6efc3f330cba39d3fb62f500                                                                                                                     0.0s
+ => => extracting sha256:cd835559902ab574fc1dbdd1e32130771477ac163c5502057ab6dc78e1f7b8fe                                                                                                                     0.0s
+ => => extracting sha256:55cbbd6285fe0ee5fcdef2dc641bfad7889b35d4542cb111968eb7f613bb6eaf                                                                                                                     0.8s
+ => CACHED [frontend build 2/6] WORKDIR /app                                                                                                                                                                  0.0s
+ => CACHED [frontend build 3/6] COPY package*.json ./                                                                                                                                                         0.0s
+ => CACHED [frontend build 4/6] RUN npm ci                                                                                                                                                                    0.0s
+ => CACHED [frontend build 5/6] COPY . .                                                                                                                                                                      0.0s
+ => CACHED [frontend build 6/6] RUN npm run build                                                                                                                                                             0.0s
+ => [frontend stage-1 2/3] COPY --from=build /app/dist /usr/share/nginx/html                                                                                                                                  0.2s
+ => [frontend stage-1 3/3] COPY nginx.conf /etc/nginx/conf.d/default.conf                                                                                                                                     0.2s
+ => [frontend] exporting to image                                                                                                                                                                             0.2s
+ => => exporting layers                                                                                                                                                                                       0.2s
+ => => writing image sha256:a1226d42f58d4509617a2f93d0c3bf361ae26a1a1dd6aa15fb25cb89c51fd6ce                                                                                                                  0.0s
+ => => naming to docker.io/library/food-ordering-platform-frontend                                                                                                                                            0.0s
+[+] Running 3/5
+ - Network food-ordering-platform_default         Created                                                                                                                                                    25.4s
+ - Volume "food-ordering-platform_postgres_data"  Created                                                                                                                                                    25.0s
+ ✔ Container food-ordering-db                     Healthy                                                                                                                                                    23.1s
+ ✔ Container food-ordering-backend                Started                                                                                                                                                    23.3s
+ ✔ Container food-ordering-frontend               Started                                                                                                                                                    23.7s
+
+C:\Users\linux\Downloads\Online-Food-Ordering-App-System-design-step-by-step\Implementation-using-claude\setup\food-ordering-platform>
+C:\Users\linux\Downloads\Online-Food-Ordering-App-System-design-step-by-step\Implementation-using-claude\setup\food-ordering-platform>docker-compose logs backend
+food-ordering-backend  |
+food-ordering-backend  |   .   ____          _            __ _ _
+food-ordering-backend  |  /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+food-ordering-backend  | ( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+food-ordering-backend  |  \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+food-ordering-backend  |   '  |____| .__|_| |_|_| |_\__, | / / / /
+food-ordering-backend  |  =========|_|==============|___/=/_/_/_/
+food-ordering-backend  |  :: Spring Boot ::                (v3.0.1)
+food-ordering-backend  |
+food-ordering-backend  | 2026-01-28 11:56:04 - Starting FoodOrderingApplication v1.0.0-SNAPSHOT using Java 17.0.17 with PID 1 (/app/app.jar started by root in /app)
+food-ordering-backend  | 2026-01-28 11:56:04 - Running with Spring Boot v3.0.1, Spring v6.0.3
+food-ordering-backend  | 2026-01-28 11:56:04 - The following 1 profile is active: "dev"
+food-ordering-backend  | 2026-01-28 11:56:07 - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+food-ordering-backend  | 2026-01-28 11:56:07 - Finished Spring Data repository scanning in 279 ms. Found 5 JPA repository interfaces.
+food-ordering-backend  | 2026-01-28 11:56:09 - Tomcat initialized with port(s): 8080 (http)
+food-ordering-backend  | 2026-01-28 11:56:09 - Starting service [Tomcat]
+food-ordering-backend  | 2026-01-28 11:56:09 - Starting Servlet engine: [Apache Tomcat/10.1.4]
+food-ordering-backend  | 2026-01-28 11:56:10 - Initializing Spring embedded WebApplicationContext
+food-ordering-backend  | 2026-01-28 11:56:10 - Root WebApplicationContext: initialization completed in 5109 ms
+food-ordering-backend  | 2026-01-28 11:56:10 - Flyway Community Edition 9.5.1 by Redgate
+food-ordering-backend  | 2026-01-28 11:56:10 - See what's new here: https://flywaydb.org/documentation/learnmore/releaseNotes#9.5.1
+food-ordering-backend  | 2026-01-28 11:56:10 -
+food-ordering-backend  | 2026-01-28 11:56:10 - HikariPool-1 - Starting...
+food-ordering-backend  | 2026-01-28 11:56:11 - HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@407cf41
+food-ordering-backend  | 2026-01-28 11:56:11 - HikariPool-1 - Start completed.
+food-ordering-backend  | 2026-01-28 11:56:11 - Database: jdbc:postgresql://postgres:5432/foodordering (PostgreSQL 15.15)
+food-ordering-backend  | 2026-01-28 11:56:11 - Successfully validated 1 migration (execution time 00:00.090s)
+food-ordering-backend  | 2026-01-28 11:56:11 - Creating Schema History table "public"."flyway_schema_history" ...
+food-ordering-backend  | 2026-01-28 11:56:11 - Current version of schema "public": << Empty Schema >>
+food-ordering-backend  | 2026-01-28 11:56:11 - Migrating schema "public" to version "1 - Initial Schema.sql"
+food-ordering-backend  | 2026-01-28 11:56:12 - Successfully applied 1 migration to schema "public", now at version v1 (execution time 00:00.506s)
+food-ordering-backend  | 2026-01-28 11:56:12 - HHH000204: Processing PersistenceUnitInfo [name: default]
+food-ordering-backend  | 2026-01-28 11:56:12 - HHH000412: Hibernate ORM core version 6.1.6.Final
+food-ordering-backend  | 2026-01-28 11:56:13 - HHH90000021: Encountered deprecated setting [javax.persistence.sharedCache.mode], use [jakarta.persistence.sharedCache.mode] instead
+food-ordering-backend  | 2026-01-28 11:56:13 - HHH000400: Using dialect: org.hibernate.dialect.PostgreSQLDialect
+food-ordering-backend  | 2026-01-28 11:56:15 - HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+food-ordering-backend  | 2026-01-28 11:56:15 - Initialized JPA EntityManagerFactory for persistence unit 'default'
+food-ordering-backend  | 2026-01-28 11:56:18 - Filter 'jwtAuthenticationFilter' configured for use
+food-ordering-backend  | 2026-01-28 11:56:21 - Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@52d9a150, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@476a38d9, org.springframework.security.web.context.SecurityContextHolderFilter@7cd239f6, org.springframework.security.web.header.HeaderWriterFilter@23657729, org.springframework.web.filter.CorsFilter@79a12552, org.springframework.web.filter.CorsFilter@5120886f, org.springframework.security.web.authentication.logout.LogoutFilter@4f66f2dd, com.foodordering.security.JwtAuthenticationFilter@708f018e, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@475753dd, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@9203db8, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@4e6c703a, org.springframework.security.web.session.SessionManagementFilter@5bbf8daa, org.springframework.security.web.access.ExceptionTranslationFilter@50b1dfab, org.springframework.security.web.access.intercept.AuthorizationFilter@5dc90de7]
+food-ordering-backend  | 2026-01-28 11:56:22 - Tomcat started on port(s): 8080 (http) with context path ''
+food-ordering-backend  | 2026-01-28 11:56:22 - Started FoodOrderingApplication in 20.505 seconds (process running for 23.501)
+food-ordering-backend  | 2026-01-28 11:56:22 -
+food-ordering-backend  |     /* select
+food-ordering-backend  |         count(*)
+food-ordering-backend  |     from
+food-ordering-backend  |         User x */ select
+food-ordering-backend  |             count(*)
+food-ordering-backend  |         from
+food-ordering-backend  |             users u1_0
+food-ordering-backend  | Hibernate:
+food-ordering-backend  |     /* select
+food-ordering-backend  |         count(*)
+food-ordering-backend  |     from
+food-ordering-backend  |         User x */ select
+food-ordering-backend  |             count(*)
+food-ordering-backend  |         from
+food-ordering-backend  |             users u1_0
+food-ordering-backend  | 2026-01-28 11:56:22 - Seeding database with sample data...
+food-ordering-backend  | 2026-01-28 11:56:23 -
+food-ordering-backend  |     /* insert com.foodordering.model.entity.User
+food-ordering-backend  |         */ insert
+food-ordering-backend  |     into
+food-ordering-backend  |         users (created_at, email, is_active, name, password_hash, phone, role, updated_at, id)
+food-ordering-backend  |     values
+food-ordering-backend  |         (?, ?, ?, ?, ?, ?, ?, ?, ?)
+food-ordering-backend  | Hibernate:
+food-ordering-backend  |     /* insert com.foodordering.model.entity.User
+food-ordering-backend  |         */ insert
+food-ordering-backend  |     into
+food-ordering-backend  |         users (created_at, email, is_active, name, password_hash, phone, role, updated_at, id)
+food-ordering-backend  |     values
+food-ordering-backend  |         (?, ?, ?, ?, ?, ?, ?, ?, ?)
+food-ordering-backend  | 2026-01-28 11:56:23 -
+food-ordering-backend  |     /* insert com.foodordering.model.entity.User
+food-ordering-backend  |         */ insert
+food-ordering-backend  |     into
+food-ordering-backend  |         users (created_at, email, is_active, name, password_hash, phone, role, updated_at, id)
+food-ordering-backend  |     values
+food-ordering-backend  |         (?, ?, ?, ?, ?, ?, ?, ?, ?)
+food-ordering-backend  | Hibernate:
+food-ordering-backend  |     /* insert com.foodordering.model.entity.User
+food-ordering-backend  |         */ insert
+food-ordering-backend  |     into
+food-ordering-backend  |         users (created_at, email, is_active, name, password_hash, phone, role, updated_at, id)
+food-ordering-backend  |     values
+food-ordering-backend  |         (?, ?, ?, ?, ?, ?, ?, ?, ?)
+food-ordering-backend  | 2026-01-28 11:56:23 -
+food-ordering-backend  |     /* insert com.foodordering.model.entity.User
+food-ordering-backend  |         */ insert
+food-ordering-backend  |     into
+food-ordering-backend  |         users (created_at, email, is_active, name, password_hash, phone, role, updated_at, id)
+food-ordering-backend  |     values
+food-ordering-backend  |         (?, ?, ?, ?, ?, ?, ?, ?, ?)
+food-ordering-backend  | Hibernate:
+food-ordering-backend  |     /* insert com.foodordering.model.entity.User
+
+food-ordering-backend  | 2026-01-28 12:04:50 - Secured POST /api/orders
+food-ordering-backend  | 2026-01-28 12:04:50 - Authorizing method invocation ReflectiveMethodInvocation: public org.springframework.http.ResponseEntity com.foodordering.controller.OrderController.createOrder(java.lang.String,com.foodordering.dto.order.CreateOrderRequest); target is of class [com.foodordering.controller.OrderController]
+food-ordering-backend  | 2026-01-28 12:04:50 - Authorized method invocation ReflectiveMethodInvocation: public org.springframework.http.ResponseEntity com.foodordering.controller.OrderController.createOrder(java.lang.String,com.foodordering.dto.order.CreateOrderRequest); target is of class [com.foodordering.controller.OrderController]
+food-ordering-backend  | 2026-01-28 12:04:50 - Creating order for customer: 2883a097-ea5f-49d8-a425-5b117b442d3b at restaurant: dc275130-7f4a-4383-82a0-67ad6da0b8c6
+food-ordering-backend  | 2026-01-28 12:04:50 -
+food-ordering-backend  |     select
+food-ordering-backend  |         u1_0.id,
+food-ordering-backend  |         u1_0.created_at,
+food-ordering-backend  |         u1_0.email,
+food-ordering-backend  |         u1_0.is_active,
+food-ordering-backend  |         u1_0.name,
+food-ordering-backend  |         u1_0.password_hash,
+food-ordering-backend  |         u1_0.phone,
+food-ordering-backend  |         u1_0.role,
+food-ordering-backend  |         u1_0.updated_at
+food-ordering-backend  |     from
+food-ordering-backend  |         users u1_0
+food-ordering-backend  |     where
+food-ordering-backend  |         u1_0.id=?
+food-ordering-backend  | Hibernate:
+food-ordering-backend  |     select
+food-ordering-backend  |         u1_0.id,
+food-ordering-backend  |         u1_0.created_at,
+food-ordering-backend  |         u1_0.email,
+food-ordering-backend  |         u1_0.is_active,
+food-ordering-backend  |         u1_0.name,
+food-ordering-backend  |         u1_0.password_hash,
+food-ordering-backend  |         u1_0.phone,
+food-ordering-backend  |         u1_0.role,
+food-ordering-backend  |         u1_0.updated_at
+food-ordering-backend  |     from
+food-ordering-backend  |         users u1_0
+food-ordering-backend  |     where
+food-ordering-backend  |         u1_0.id=?
+food-ordering-backend  | 2026-01-28 12:04:50 -
+food-ordering-backend  |     select
+food-ordering-backend  |         r1_0.id,
+food-ordering-backend  |         r1_0.address,
+food-ordering-backend  |         r1_0.closing_time,
+food-ordering-backend  |         r1_0.created_at,
+food-ordering-backend  |         r1_0.description,
+food-ordering-backend  |         r1_0.image_url,
+food-ordering-backend  |         r1_0.is_active,
+food-ordering-backend  |         r1_0.latitude,
+food-ordering-backend  |         r1_0.longitude,
+food-ordering-backend  |         r1_0.name,
+food-ordering-backend  |         r1_0.opening_time,
+food-ordering-backend  |         r1_0.owner_id,
+food-ordering-backend  |         r1_0.phone,
+food-ordering-backend  |         r1_0.updated_at
+food-ordering-backend  |     from
+food-ordering-backend  |         restaurants r1_0
+food-ordering-backend  |     where
+food-ordering-backend  |         r1_0.id=?
+food-ordering-backend  | Hibernate:
+food-ordering-backend  |     select
+food-ordering-backend  |         r1_0.id,
+food-ordering-backend  |         r1_0.address,
+food-ordering-backend  |         r1_0.closing_time,
+food-ordering-backend  |         r1_0.created_at,
+food-ordering-backend  |         r1_0.description,
+food-ordering-backend  |         r1_0.image_url,
+food-ordering-backend  |         r1_0.is_active,
+food-ordering-backend  |         r1_0.latitude,
+food-ordering-backend  |         r1_0.longitude,
+food-ordering-backend  |         r1_0.name,
+food-ordering-backend  |         r1_0.opening_time,
+food-ordering-backend  |         r1_0.owner_id,
+food-ordering-backend  |         r1_0.phone,
+food-ordering-backend  |         r1_0.updated_at
+food-ordering-backend  |     from
+food-ordering-backend  |         restaurants r1_0
+food-ordering-backend  |     where
+food-ordering-backend  |         r1_0.id=?
+food-ordering-backend  | 2026-01-28 12:04:50 -
+food-ordering-backend  |     select
+food-ordering-backend  |         m1_0.id,
+food-ordering-backend  |         m1_0.category,
+food-ordering-backend  |         m1_0.created_at,
+food-ordering-backend  |         m1_0.description,
+food-ordering-backend  |         m1_0.image_url,
+food-ordering-backend  |         m1_0.is_available,
+food-ordering-backend  |         m1_0.is_vegetarian,
+food-ordering-backend  |         m1_0.name,
+food-ordering-backend  |         m1_0.price,
+food-ordering-backend  |         m1_0.restaurant_id,
+food-ordering-backend  |         m1_0.updated_at
+food-ordering-backend  |     from
+food-ordering-backend  |         menu_items m1_0
+food-ordering-backend  |     where
+food-ordering-backend  |         m1_0.id=?
+food-ordering-backend  | Hibernate:
+food-ordering-backend  |     select
+food-ordering-backend  |         m1_0.id,
+food-ordering-backend  |         m1_0.category,
+food-ordering-backend  |         m1_0.created_at,
+food-ordering-backend  |         m1_0.description,
+food-ordering-backend  |         m1_0.image_url,
+food-ordering-backend  |         m1_0.is_available,
+food-ordering-backend  |         m1_0.is_vegetarian,
+food-ordering-backend  |         m1_0.name,
+food-ordering-backend  |         m1_0.price,
+food-ordering-backend  |         m1_0.restaurant_id,
+food-ordering-backend  |         m1_0.updated_at
+food-ordering-backend  |     from
+food-ordering-backend  |         menu_items m1_0
+food-ordering-backend  |     where
+food-ordering-backend  |         m1_0.id=?
+food-ordering-backend  | 2026-01-28 12:04:50 -
+food-ordering-backend  |     select
+food-ordering-backend  |         m1_0.id,
+food-ordering-backend  |         m1_0.category,
+food-ordering-backend  |         m1_0.created_at,
+food-ordering-backend  |         m1_0.description,
+food-ordering-backend  |         m1_0.image_url,
+food-ordering-backend  |         m1_0.is_available,
+food-ordering-backend  |         m1_0.is_vegetarian,
+food-ordering-backend  |         m1_0.name,
+food-ordering-backend  |         m1_0.price,
+food-ordering-backend  |         m1_0.restaurant_id,
+food-ordering-backend  |         m1_0.updated_at
+food-ordering-backend  |     from
+food-ordering-backend  |         menu_items m1_0
+food-ordering-backend  |     where
+food-ordering-backend  |         m1_0.id=?
+food-ordering-backend  | Hibernate:
+food-ordering-backend  |     select
+food-ordering-backend  |         m1_0.id,
+food-ordering-backend  |         m1_0.category,
+food-ordering-backend  |         m1_0.created_at,
+food-ordering-backend  |         m1_0.description,
+food-ordering-backend  |         m1_0.image_url,
+food-ordering-backend  |         m1_0.is_available,
+food-ordering-backend  |         m1_0.is_vegetarian,
+food-ordering-backend  |         m1_0.name,
+food-ordering-backend  |         m1_0.price,
+food-ordering-backend  |         m1_0.restaurant_id,
+food-ordering-backend  |         m1_0.updated_at
+food-ordering-backend  |     from
+food-ordering-backend  |         menu_items m1_0
+food-ordering-backend  |     where
+food-ordering-backend  |         m1_0.id=?
+food-ordering-backend  | 2026-01-28 12:04:50 -
+food-ordering-backend  |     select
+food-ordering-backend  |         m1_0.id,
+food-ordering-backend  |         m1_0.category,
+food-ordering-backend  |         m1_0.created_at,
+food-ordering-backend  |         m1_0.description,
+food-ordering-backend  |         m1_0.image_url,
+food-ordering-backend  |         m1_0.is_available,
+food-ordering-backend  |         m1_0.is_vegetarian,
+food-ordering-backend  |         m1_0.name,
+food-ordering-backend  |         m1_0.price,
+food-ordering-backend  |         m1_0.restaurant_id,
+food-ordering-backend  |         m1_0.updated_at
+food-ordering-backend  |     from
+food-ordering-backend  |         menu_items m1_0
+food-ordering-backend  |     where
+food-ordering-backend  |         m1_0.id=?
+food-ordering-backend  | Hibernate:
+food-ordering-backend  |     select
+food-ordering-backend  |         m1_0.id,
+food-ordering-backend  |         m1_0.category,
+food-ordering-backend  |         m1_0.created_at,
+food-ordering-backend  |         m1_0.description,
+food-ordering-backend  |         m1_0.image_url,
+food-ordering-backend  |         m1_0.is_available,
+food-ordering-backend  |         m1_0.is_vegetarian,
+food-ordering-backend  |         m1_0.name,
+food-ordering-backend  |         m1_0.price,
+food-ordering-backend  |         m1_0.restaurant_id,
+food-ordering-backend  |         m1_0.updated_at
+food-ordering-backend  |     from
+food-ordering-backend  |         menu_items m1_0
+food-ordering-backend  |     where
+food-ordering-backend  |         m1_0.id=?
+food-ordering-backend  | 2026-01-28 12:04:50 -
+food-ordering-backend  |     select
+food-ordering-backend  |         m1_0.id,
+food-ordering-backend  |         m1_0.category,
+food-ordering-backend  |         m1_0.created_at,
+food-ordering-backend  |         m1_0.description,
+food-ordering-backend  |         m1_0.image_url,
+food-ordering-backend  |         m1_0.is_available,
+food-ordering-backend  |         m1_0.is_vegetarian,
+food-ordering-backend  |         m1_0.name,
+food-ordering-backend  |         m1_0.price,
+food-ordering-backend  |         m1_0.restaurant_id,
+food-ordering-backend  |         m1_0.updated_at
+food-ordering-backend  |     from
+food-ordering-backend  |         menu_items m1_0
+food-ordering-backend  |     where
+food-ordering-backend  |         m1_0.id=?
+food-ordering-backend  | Hibernate:
+food-ordering-backend  |     select
+food-ordering-backend  |         m1_0.id,
+food-ordering-backend  |         m1_0.category,
+food-ordering-backend  |         m1_0.created_at,
+food-ordering-backend  |         m1_0.description,
+food-ordering-backend  |         m1_0.image_url,
+food-ordering-backend  |         m1_0.is_available,
+food-ordering-backend  |         m1_0.is_vegetarian,
+food-ordering-backend  |         m1_0.name,
+food-ordering-backend  |         m1_0.price,
+food-ordering-backend  |         m1_0.restaurant_id,
+food-ordering-backend  |         m1_0.updated_at
+food-ordering-backend  |     from
+food-ordering-backend  |         menu_items m1_0
+food-ordering-backend  |     where
+food-ordering-backend  |         m1_0.id=?
+food-ordering-backend  | 2026-01-28 12:04:50 - Order created with ID: bdd1ea15-cdf5-4dd5-b79f-270285f290a5, Total: 864.00
+food-ordering-backend  | 2026-01-28 12:04:50 - Initiating payment for order: bdd1ea15-cdf5-4dd5-b79f-270285f290a5, amount: 864.00
+food-ordering-backend  | 2026-01-28 12:04:50 -
+food-ordering-backend  |     /* insert com.foodordering.model.entity.Order
+food-ordering-backend  |         */ insert
+food-ordering-backend  |     into
+food-ordering-backend  |         orders (created_at, customer_id, delivered_at, delivery_address, delivery_latitude, delivery_longitude, delivery_partner_id, estimated_delivery_time, restaurant_id, special_instructions, status, total_amount, updated_at, id)
+food-ordering-backend  |     values
+food-ordering-backend  |         (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+food-ordering-backend  | Hibernate:
+food-ordering-backend  |     /* insert com.foodordering.model.entity.Order
+food-ordering-backend  |         */ insert
+food-ordering-backend  |     into
+food-ordering-backend  |         orders (created_at, customer_id, delivered_at, delivery_address, delivery_latitude, delivery_longitude, delivery_partner_id, estimated_delivery_time, restaurant_id, special_instructions, status, total_amount, updated_at, id)
+food-ordering-backend  |     values
+food-ordering-backend  |         (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+food-ordering-backend  | 2026-01-28 12:04:50 -
+food-ordering-backend  |     /* insert com.foodordering.model.entity.OrderItem
+food-ordering-backend  |         */ insert
+food-ordering-backend  |     into
+food-ordering-backend  |         order_items (created_at, menu_item_id, menu_item_name, order_id, price, quantity, id)
+food-ordering-backend  |     values
+food-ordering-backend  |         (?, ?, ?, ?, ?, ?, ?)
+food-ordering-backend  | Hibernate:
+food-ordering-backend  |     /* insert com.foodordering.model.entity.OrderItem
+food-ordering-backend  |         */ insert
+food-ordering-backend  |     into
+food-ordering-backend  |         order_items (created_at, menu_item_id, menu_item_name, order_id, price, quantity, id)
+food-ordering-backend  |     values
+food-ordering-backend  |         (?, ?, ?, ?, ?, ?, ?)
+food-ordering-backend  | 2026-01-28 12:04:50 -
+food-ordering-backend  |     /* insert com.foodordering.model.entity.OrderItem
+food-ordering-backend  |         */ insert
+food-ordering-backend  |     into
+food-ordering-backend  |         order_items (created_at, menu_item_id, menu_item_name, order_id, price, quantity, id)
+food-ordering-backend  |     values
+food-ordering-backend  |         (?, ?, ?, ?, ?, ?, ?)
+food-ordering-backend  | Hibernate:
+food-ordering-backend  |     /* insert com.foodordering.model.entity.OrderItem
+food-ordering-backend  |         */ insert
+food-ordering-backend  |     into
+food-ordering-backend  |         order_items (created_at, menu_item_id, menu_item_name, order_id, price, quantity, id)
+food-ordering-backend  |     values
+food-ordering-backend  |         (?, ?, ?, ?, ?, ?, ?)
+food-ordering-backend  | 2026-01-28 12:04:50 -
+food-ordering-backend  |     /* insert com.foodordering.model.entity.OrderItem
+food-ordering-backend  |         */ insert
+food-ordering-backend  |     into
+food-ordering-backend  |         order_items (created_at, menu_item_id, menu_item_name, order_id, price, quantity, id)
+food-ordering-backend  |     values
+food-ordering-backend  |         (?, ?, ?, ?, ?, ?, ?)
+food-ordering-backend  | Hibernate:
+food-ordering-backend  |     /* insert com.foodordering.model.entity.OrderItem
+food-ordering-backend  |         */ insert
+food-ordering-backend  |     into
+food-ordering-backend  |         order_items (created_at, menu_item_id, menu_item_name, order_id, price, quantity, id)
+food-ordering-backend  |     values
+food-ordering-backend  |         (?, ?, ?, ?, ?, ?, ?)
+food-ordering-backend  | 2026-01-28 12:04:50 -
+food-ordering-backend  |     /* insert com.foodordering.model.entity.OrderItem
+food-ordering-backend  |         */ insert
+food-ordering-backend  |     into
+food-ordering-backend  |         order_items (created_at, menu_item_id, menu_item_name, order_id, price, quantity, id)
+food-ordering-backend  |     values
+food-ordering-backend  |         (?, ?, ?, ?, ?, ?, ?)
+food-ordering-backend  | Hibernate:
+food-ordering-backend  |     /* insert com.foodordering.model.entity.OrderItem
+food-ordering-backend  |         */ insert
+food-ordering-backend  |     into
+food-ordering-backend  |         order_items (created_at, menu_item_id, menu_item_name, order_id, price, quantity, id)
+food-ordering-backend  |     values
+food-ordering-backend  |         (?, ?, ?, ?, ?, ?, ?)
+food-ordering-backend  | 2026-01-28 12:04:50 -
+food-ordering-backend  |     /* insert com.foodordering.model.entity.Payment
+food-ordering-backend  |         */ insert
+food-ordering-backend  |     into
+food-ordering-backend  |         payments (amount, created_at, failure_reason, order_id, payment_method, provider, status, transaction_ref, updated_at, id)
+food-ordering-backend  |     values
+food-ordering-backend  |         (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+food-ordering-backend  | Hibernate:
+food-ordering-backend  |     /* insert com.foodordering.model.entity.Payment
+food-ordering-backend  |         */ insert
+food-ordering-backend  |     into
+food-ordering-backend  |         payments (amount, created_at, failure_reason, order_id, payment_method, provider, status, transaction_ref, updated_at, id)
+food-ordering-backend  |     values
+food-ordering-backend  |         (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+food-ordering-backend  | 2026-01-28 12:04:56 - Securing GET /api/restaurants
+food-ordering-backend  | 2026-01-28 12:04:56 -
+food-ordering-backend  |     /* <criteria> */ select
+food-ordering-backend  |         u1_0.id,
+food-ordering-backend  |         u1_0.created_at,
+food-ordering-backend  |         u1_0.email,
+food-ordering-backend  |         u1_0.is_active,
+food-ordering-backend  |         u1_0.name,
+food-ordering-backend  |         u1_0.password_hash,
+food-ordering-backend  |         u1_0.phone,
+food-ordering-backend  |         u1_0.role,
+food-ordering-backend  |         u1_0.updated_at
+food-ordering-backend  |     from
+food-ordering-backend  |         users u1_0
+food-ordering-backend  |     where
+food-ordering-backend  |         u1_0.email=?
+food-ordering-backend  | Hibernate:
+food-ordering-backend  |     /* <criteria> */ select
+food-ordering-backend  |         u1_0.id,
+food-ordering-backend  |         u1_0.created_at,
+food-ordering-backend  |         u1_0.email,
+food-ordering-backend  |         u1_0.is_active,
+food-ordering-backend  |         u1_0.name,
+food-ordering-backend  |         u1_0.password_hash,
+food-ordering-backend  |         u1_0.phone,
+food-ordering-backend  |         u1_0.role,
+food-ordering-backend  |         u1_0.updated_at
+food-ordering-backend  |     from
+food-ordering-backend  |         users u1_0
+food-ordering-backend  |     where
+food-ordering-backend  |         u1_0.email=?
+food-ordering-backend  | 2026-01-28 12:04:56 - Secured GET /api/restaurants
+food-ordering-backend  | 2026-01-28 12:04:56 - Fetching restaurants near lat: null, lng: null
+food-ordering-backend  | 2026-01-28 12:04:56 -
+food-ordering-backend  |     /* <criteria> */ select
+food-ordering-backend  |         r1_0.id,
+food-ordering-backend  |         r1_0.address,
+food-ordering-backend  |         r1_0.closing_time,
+food-ordering-backend  |         r1_0.created_at,
+food-ordering-backend  |         r1_0.description,
+food-ordering-backend  |         r1_0.image_url,
+food-ordering-backend  |         r1_0.is_active,
+food-ordering-backend  |         r1_0.latitude,
+food-ordering-backend  |         r1_0.longitude,
+food-ordering-backend  |         r1_0.name,
+food-ordering-backend  |         r1_0.opening_time,
+food-ordering-backend  |         r1_0.owner_id,
+food-ordering-backend  |         r1_0.phone,
+food-ordering-backend  |         r1_0.updated_at
+food-ordering-backend  |     from
+food-ordering-backend  |         restaurants r1_0
+food-ordering-backend  |     where
+food-ordering-backend  |         r1_0.is_active
+food-ordering-backend  | Hibernate:
+food-ordering-backend  |     /* <criteria> */ select
+food-ordering-backend  |         r1_0.id,
+food-ordering-backend  |         r1_0.address,
+food-ordering-backend  |         r1_0.closing_time,
+food-ordering-backend  |         r1_0.created_at,
+food-ordering-backend  |         r1_0.description,
+food-ordering-backend  |         r1_0.image_url,
+food-ordering-backend  |         r1_0.is_active,
+food-ordering-backend  |         r1_0.latitude,
+food-ordering-backend  |         r1_0.longitude,
+food-ordering-backend  |         r1_0.name,
+food-ordering-backend  |         r1_0.opening_time,
+food-ordering-backend  |         r1_0.owner_id,
+food-ordering-backend  |         r1_0.phone,
+food-ordering-backend  |         r1_0.updated_at
+food-ordering-backend  |     from
+food-ordering-backend  |         restaurants r1_0
+food-ordering-backend  |     where
+food-ordering-backend  |         r1_0.is_active
+food-ordering-backend  | 2026-01-28 12:13:57 - Securing OPTIONS /api/restaurants/29132c0e-051b-40fd-99f7-b40c749b81d6
+food-ordering-backend  | 2026-01-28 12:13:57 - Securing OPTIONS /api/restaurants/29132c0e-051b-40fd-99f7-b40c749b81d6/menu
+food-ordering-backend  | 2026-01-28 12:13:57 - Securing GET /api/restaurants/29132c0e-051b-40fd-99f7-b40c749b81d6
+food-ordering-backend  | 2026-01-28 12:13:57 - Securing GET /api/restaurants/29132c0e-051b-40fd-99f7-b40c749b81d6/menu
+food-ordering-backend  | 2026-01-28 12:13:57 -
+food-ordering-backend  |     /* <criteria> */ select
+food-ordering-backend  |         u1_0.id,
+food-ordering-backend  |         u1_0.created_at,
+food-ordering-backend  |         u1_0.email,
+food-ordering-backend  |         u1_0.is_active,
+food-ordering-backend  |         u1_0.name,
+food-ordering-backend  |         u1_0.password_hash,
+food-ordering-backend  |         u1_0.phone,
+food-ordering-backend  |         u1_0.role,
+food-ordering-backend  |         u1_0.updated_at
+food-ordering-backend  |     from
+food-ordering-backend  |         users u1_0
+food-ordering-backend  |     where
+food-ordering-backend  |         u1_0.email=?
+food-ordering-backend  | Hibernate:
+food-ordering-backend  |     /* <criteria> */ select
+food-ordering-backend  |         u1_0.id,
+food-ordering-backend  |         u1_0.created_at,
+food-ordering-backend  |         u1_0.email,
+food-ordering-backend  |         u1_0.is_active,
+food-ordering-backend  |         u1_0.name,
+food-ordering-backend  |         u1_0.password_hash,
+food-ordering-backend  |         u1_0.phone,
+food-ordering-backend  |         u1_0.role,
+food-ordering-backend  |         u1_0.updated_at
+food-ordering-backend  |     from
+food-ordering-backend  |         users u1_0
+food-ordering-backend  |     where
+food-ordering-backend  |         u1_0.email=?
+food-ordering-backend  | 2026-01-28 12:13:57 - Secured GET /api/restaurants/29132c0e-051b-40fd-99f7-b40c749b81d6
+food-ordering-backend  | 2026-01-28 12:13:57 -
+food-ordering-backend  |     /* <criteria> */ select
+food-ordering-backend  |         u1_0.id,
+food-ordering-backend  |         u1_0.created_at,
+food-ordering-backend  |         u1_0.email,
+food-ordering-backend  |         u1_0.is_active,
+food-ordering-backend  |         u1_0.name,
+food-ordering-backend  |         u1_0.password_hash,
+food-ordering-backend  |         u1_0.phone,
+food-ordering-backend  |         u1_0.role,
+food-ordering-backend  |         u1_0.updated_at
+food-ordering-backend  |     from
+food-ordering-backend  |         users u1_0
+food-ordering-backend  |     where
+food-ordering-backend  |         u1_0.email=?
+food-ordering-backend  | Hibernate:
+food-ordering-backend  |     /* <criteria> */ select
+food-ordering-backend  |         u1_0.id,
+food-ordering-backend  |         u1_0.created_at,
+food-ordering-backend  |         u1_0.email,
+food-ordering-backend  |         u1_0.is_active,
+food-ordering-backend  |         u1_0.name,
+food-ordering-backend  |         u1_0.password_hash,
+food-ordering-backend  |         u1_0.phone,
+food-ordering-backend  |         u1_0.role,
+food-ordering-backend  |         u1_0.updated_at
+food-ordering-backend  |     from
+food-ordering-backend  |         users u1_0
+food-ordering-backend  |     where
+food-ordering-backend  |         u1_0.email=?
+food-ordering-backend  | 2026-01-28 12:13:57 - Fetching restaurant with ID: 29132c0e-051b-40fd-99f7-b40c749b81d6
+food-ordering-backend  | 2026-01-28 12:13:57 -
+food-ordering-backend  |     select
+food-ordering-backend  |         r1_0.id,
+food-ordering-backend  |         r1_0.address,
+food-ordering-backend  |         r1_0.closing_time,
+food-ordering-backend  |         r1_0.created_at,
+food-ordering-backend  |         r1_0.description,
+food-ordering-backend  |         r1_0.image_url,
+food-ordering-backend  |         r1_0.is_active,
+food-ordering-backend  |         r1_0.latitude,
+food-ordering-backend  |         r1_0.longitude,
+food-ordering-backend  |         r1_0.name,
+food-ordering-backend  |         r1_0.opening_time,
+food-ordering-backend  |         r1_0.owner_id,
+food-ordering-backend  |         r1_0.phone,
+food-ordering-backend  |         r1_0.updated_at
+food-ordering-backend  |     from
+food-ordering-backend  |         restaurants r1_0
+food-ordering-backend  |     where
+food-ordering-backend  |         r1_0.id=?
+food-ordering-backend  | Hibernate:
+food-ordering-backend  |     select
+food-ordering-backend  |         r1_0.id,
+food-ordering-backend  |         r1_0.address,
+food-ordering-backend  |         r1_0.closing_time,
+food-ordering-backend  |         r1_0.created_at,
+food-ordering-backend  |         r1_0.description,
+food-ordering-backend  |         r1_0.image_url,
+food-ordering-backend  |         r1_0.is_active,
+food-ordering-backend  |         r1_0.latitude,
+food-ordering-backend  |         r1_0.longitude,
+food-ordering-backend  |         r1_0.name,
+food-ordering-backend  |         r1_0.opening_time,
+food-ordering-backend  |         r1_0.owner_id,
+food-ordering-backend  |         r1_0.phone,
+food-ordering-backend  |         r1_0.updated_at
+food-ordering-backend  |     from
+food-ordering-backend  |         restaurants r1_0
+food-ordering-backend  |     where
+food-ordering-backend  |         r1_0.id=?
+food-ordering-backend  | 2026-01-28 12:13:57 - Secured GET /api/restaurants/29132c0e-051b-40fd-99f7-b40c749b81d6/menu
+food-ordering-backend  | 2026-01-28 12:13:57 - Fetching menu for restaurant ID: 29132c0e-051b-40fd-99f7-b40c749b81d6
+food-ordering-backend  | 2026-01-28 12:13:57 -
+food-ordering-backend  |     /* select
+food-ordering-backend  |         count(*)
+food-ordering-backend  |     from
+food-ordering-backend  |         Restaurant x
+food-ordering-backend  |     WHERE
+food-ordering-backend  |         x.id = :id */ select
+food-ordering-backend  |             count(*)
+food-ordering-backend  |         from
+food-ordering-backend  |             restaurants r1_0
+food-ordering-backend  |         where
+food-ordering-backend  |             r1_0.id=?
+food-ordering-backend  | Hibernate:
+food-ordering-backend  |     /* select
+food-ordering-backend  |         count(*)
+food-ordering-backend  |     from
+food-ordering-backend  |         Restaurant x
+food-ordering-backend  |     WHERE
+food-ordering-backend  |         x.id = :id */ select
+food-ordering-backend  |             count(*)
+food-ordering-backend  |         from
+food-ordering-backend  |             restaurants r1_0
+food-ordering-backend  |         where
+food-ordering-backend  |             r1_0.id=?
+food-ordering-backend  | 2026-01-28 12:13:57 -
+food-ordering-backend  |     /* <criteria> */ select
+food-ordering-backend  |         m1_0.id,
+food-ordering-backend  |         m1_0.category,
+food-ordering-backend  |         m1_0.created_at,
+food-ordering-backend  |         m1_0.description,
+food-ordering-backend  |         m1_0.image_url,
+food-ordering-backend  |         m1_0.is_available,
+food-ordering-backend  |         m1_0.is_vegetarian,
+food-ordering-backend  |         m1_0.name,
+food-ordering-backend  |         m1_0.price,
+food-ordering-backend  |         m1_0.restaurant_id,
+food-ordering-backend  |         m1_0.updated_at
+food-ordering-backend  |     from
+food-ordering-backend  |         menu_items m1_0
+food-ordering-backend  |     where
+food-ordering-backend  |         m1_0.restaurant_id=?
+food-ordering-backend  |         and m1_0.is_available
+food-ordering-backend  | Hibernate:
+food-ordering-backend  |     /* <criteria> */ select
+food-ordering-backend  |         m1_0.id,
+food-ordering-backend  |         m1_0.category,
+food-ordering-backend  |         m1_0.created_at,
+food-ordering-backend  |         m1_0.description,
+food-ordering-backend  |         m1_0.image_url,
+food-ordering-backend  |         m1_0.is_available,
+food-ordering-backend  |         m1_0.is_vegetarian,
+food-ordering-backend  |         m1_0.name,
+food-ordering-backend  |         m1_0.price,
+food-ordering-backend  |         m1_0.restaurant_id,
+food-ordering-backend  |         m1_0.updated_at
+food-ordering-backend  |     from
+food-ordering-backend  |         menu_items m1_0
+food-ordering-backend  |     where
+food-ordering-backend  |         m1_0.restaurant_id=?
+food-ordering-backend  |         and m1_0.is_available
+food-ordering-backend  | 2026-01-28 12:14:05 - Securing GET /api/restaurants
+food-ordering-backend  | 2026-01-28 12:14:05 -
+food-ordering-backend  |     /* <criteria> */ select
+food-ordering-backend  |         u1_0.id,
+food-ordering-backend  |         u1_0.created_at,
+food-ordering-backend  |         u1_0.email,
+food-ordering-backend  |         u1_0.is_active,
+food-ordering-backend  |         u1_0.name,
+food-ordering-backend  |         u1_0.password_hash,
+food-ordering-backend  |         u1_0.phone,
+food-ordering-backend  |         u1_0.role,
+food-ordering-backend  |         u1_0.updated_at
+food-ordering-backend  |     from
+food-ordering-backend  |         users u1_0
+food-ordering-backend  |     where
+food-ordering-backend  |         u1_0.email=?
+food-ordering-backend  | Hibernate:
+food-ordering-backend  |     /* <criteria> */ select
+food-ordering-backend  |         u1_0.id,
+food-ordering-backend  |         u1_0.created_at,
+food-ordering-backend  |         u1_0.email,
+food-ordering-backend  |         u1_0.is_active,
+food-ordering-backend  |         u1_0.name,
+food-ordering-backend  |         u1_0.password_hash,
+food-ordering-backend  |         u1_0.phone,
+food-ordering-backend  |         u1_0.role,
+food-ordering-backend  |         u1_0.updated_at
+food-ordering-backend  |     from
+food-ordering-backend  |         users u1_0
+food-ordering-backend  |     where
+food-ordering-backend  |         u1_0.email=?
+food-ordering-backend  | 2026-01-28 12:14:05 - Secured GET /api/restaurants
+food-ordering-backend  | 2026-01-28 12:14:05 - Fetching restaurants near lat: null, lng: null
+food-ordering-backend  | 2026-01-28 12:14:05 -
+food-ordering-backend  |     /* <criteria> */ select
+food-ordering-backend  |         r1_0.id,
+food-ordering-backend  |         r1_0.address,
+food-ordering-backend  |         r1_0.closing_time,
+food-ordering-backend  |         r1_0.created_at,
+food-ordering-backend  |         r1_0.description,
+food-ordering-backend  |         r1_0.image_url,
+food-ordering-backend  |         r1_0.is_active,
+food-ordering-backend  |         r1_0.latitude,
+food-ordering-backend  |         r1_0.longitude,
+food-ordering-backend  |         r1_0.name,
+food-ordering-backend  |         r1_0.opening_time,
+food-ordering-backend  |         r1_0.owner_id,
+food-ordering-backend  |         r1_0.phone,
+food-ordering-backend  |         r1_0.updated_at
+food-ordering-backend  |     from
+food-ordering-backend  |         restaurants r1_0
+food-ordering-backend  |     where
+food-ordering-backend  |         r1_0.is_active
+food-ordering-backend  | Hibernate:
+food-ordering-backend  |     /* <criteria> */ select
+food-ordering-backend  |         r1_0.id,
+food-ordering-backend  |         r1_0.address,
+food-ordering-backend  |         r1_0.closing_time,
+food-ordering-backend  |         r1_0.created_at,
+food-ordering-backend  |         r1_0.description,
+food-ordering-backend  |         r1_0.image_url,
+food-ordering-backend  |         r1_0.is_active,
+food-ordering-backend  |         r1_0.latitude,
+food-ordering-backend  |         r1_0.longitude,
+food-ordering-backend  |         r1_0.name,
+food-ordering-backend  |         r1_0.opening_time,
+food-ordering-backend  |         r1_0.owner_id,
+food-ordering-backend  |         r1_0.phone,
+food-ordering-backend  |         r1_0.updated_at
+food-ordering-backend  |     from
+food-ordering-backend  |         restaurants r1_0
+food-ordering-backend  |     where
+food-ordering-backend  |         r1_0.is_active
+food-ordering-backend  | 2026-01-28 12:14:13 - Securing GET /api/orders
+food-ordering-backend  | 2026-01-28 12:14:13 -
+food-ordering-backend  |     /* <criteria> */ select
+food-ordering-backend  |         u1_0.id,
+food-ordering-backend  |         u1_0.created_at,
+food-ordering-backend  |         u1_0.email,
+food-ordering-backend  |         u1_0.is_active,
+food-ordering-backend  |         u1_0.name,
+food-ordering-backend  |         u1_0.password_hash,
+food-ordering-backend  |         u1_0.phone,
+food-ordering-backend  |         u1_0.role,
+food-ordering-backend  |         u1_0.updated_at
+food-ordering-backend  |     from
+food-ordering-backend  |         users u1_0
+food-ordering-backend  |     where
+food-ordering-backend  |         u1_0.email=?
+food-ordering-backend  | Hibernate:
+food-ordering-backend  |     /* <criteria> */ select
+food-ordering-backend  |         u1_0.id,
+food-ordering-backend  |         u1_0.created_at,
+food-ordering-backend  |         u1_0.email,
+food-ordering-backend  |         u1_0.is_active,
+food-ordering-backend  |         u1_0.name,
+food-ordering-backend  |         u1_0.password_hash,
+food-ordering-backend  |         u1_0.phone,
+food-ordering-backend  |         u1_0.role,
+food-ordering-backend  |         u1_0.updated_at
+food-ordering-backend  |     from
+food-ordering-backend  |         users u1_0
+food-ordering-backend  |     where
+food-ordering-backend  |         u1_0.email=?
+food-ordering-backend  | 2026-01-28 12:14:13 - Secured GET /api/orders
+food-ordering-backend  | 2026-01-28 12:14:13 - Authorizing method invocation ReflectiveMethodInvocation: public org.springframework.http.ResponseEntity com.foodordering.controller.OrderController.getMyOrders(java.lang.String); target is of class [com.foodordering.controller.OrderController]
+food-ordering-backend  | 2026-01-28 12:14:13 - Authorized method invocation ReflectiveMethodInvocation: public org.springframework.http.ResponseEntity com.foodordering.controller.OrderController.getMyOrders(java.lang.String); target is of class [com.foodordering.controller.OrderController]
+food-ordering-backend  | 2026-01-28 12:14:13 - Fetching orders for customer: 2883a097-ea5f-49d8-a425-5b117b442d3b
+
+
+
+Run in browser: http://localhost:3000
+or (because it mapping is given in the hosts file as well in the nginx file)
+http://foodordering.local
+
+
+try these if container not start sometimes due to cache: 
+docker compose down
+docker system prune -f
+docker volume prune -f
+docker compose build --no-cache
+docker compose up 
+
+https://chatgpt.com/g/g-697b59ad7ff88191af891004ddc29af8-the-responsibility-project (my own gpt using chatgpt) The responsibility project
+
